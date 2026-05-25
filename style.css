@@ -201,6 +201,10 @@ body {
     overflow-y: auto;
 }
 
+.interaction-panel p {
+    margin-bottom: 5px;
+}
+
 /* Modals */
 .modal {
     position: fixed;
@@ -423,6 +427,7 @@ body {
 #winStats {
     color: #ffff00;
     font-size: 14px;
+    white-space: pre-line;
 }
 
 /* Buttons */
