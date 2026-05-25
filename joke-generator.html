@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <link rel="stylesheet" href="joke-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="joke-card">
+            <div class="header">
+                <h1>😂 Joke Generator 😂</h1>
+                <p class="subtitle">Get a laugh every time!</p>
+            </div>
+
+            <div class="joke-display">
+                <div id="jokeContent" class="joke-content">
+                    <p id="jokeText">Click "Get Joke" to start laughing!</p>
+                </div>
+            </div>
+
+            <div class="joke-type">
+                <label for="jokeType">Select Joke Type:</label>
+                <select id="jokeType">
+                    <option value="any">Any</option>
+                    <option value="general">General</option>
+                    <option value="programming">Programming</option>
+                    <option value="knock-knock">Knock-Knock</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button id="getJokeBtn" class="btn btn-primary">
+                    <span class="btn-text">Get Joke</span>
+                    <span class="spinner" id="spinner"></span>
+                </button>
+                <button id="shareBtn" class="btn btn-secondary" title="Copy to clipboard">
+                    📋 Copy
+                </button>
+            </div>
+
+            <div class="joke-counter">
+                <p>Jokes Loaded: <span id="jokeCount">0</span></p>
+            </div>
+
+            <div id="notification" class="notification hidden">
+                <span id="notificationText"></span>
+            </div>
+
+            <div class="joke-history">
+                <h3>📚 Recent Jokes</h3>
+                <ul id="historyList" class="history-list">
+                    <li class="empty-message">No jokes yet. Get started!</li>
+                </ul>
+                <button id="clearHistoryBtn" class="btn btn-small" style="display: none;">
+                    Clear History
+                </button>
+            </div>
+
+            <div class="info-section">
+                <details>
+                    <summary>ℹ️ About This App</summary>
+                    <p>This joke generator uses the <strong>JokeAPI</strong> to fetch random jokes. You can filter by joke type and copy your favorite jokes to share with friends!</p>
+                    <p><strong>API Used:</strong> <a href="https://jokeapi.dev/" target="_blank">JokeAPI</a></p>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <script src="joke-script.js"></script>
+</body>
+</html>
