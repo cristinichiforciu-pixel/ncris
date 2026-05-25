@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape VanaSpotify's Classroom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameContainer" class="game-container">
+        <!-- Main Game Area -->
+        <div id="gameArea" class="game-area">
+            <div class="game-header">
+                <h1>🏫 Escape VanaSpotify's Classroom 🎵</h1>
+                <div class="game-stats">
+                    <p>Keys Found: <span id="keysFound">0</span>/3</p>
+                    <p>Time: <span id="timer">300</span>s</p>
+                    <p>Status: <span id="status">Running Away...</span></p>
+                </div>
+            </div>
+
+            <!-- Game Scene -->
+            <div class="classroom-scene">
+                <div class="door locked" id="door">
+                    <p>🚪 LOCKED DOOR</p>
+                </div>
+
+                <div class="player" id="player">👤</div>
+
+                <div class="teacher" id="teacher">
+                    <div class="accordion">🎶</div>
+                    <p>VanaSpotify</p>
+                </div>
+
+                <!-- Interactive Objects -->
+                <div class="desk clickable" id="desk">📚</div>
+                <div class="chair clickable" id="chair">🪑</div>
+                <div class="locker clickable" id="locker">🗄️</div>
+                <div class="plant clickable" id="plant">🌿</div>
+            </div>
+
+            <!-- Game Info -->
+            <div class="game-info">
+                <h2>Objective:</h2>
+                <p>Find 3 hidden keys to unlock the door and escape VanaSpotify's unstoppable accordion!</p>
+                <p id="hint">💡 Hint: Check the objects in the classroom...</p>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameOverModal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="gameOverTitle">Game Over!</h2>
+                <p id="gameOverMessage">You were caught by VanaSpotify's accordion!</p>
+                <button onclick="location.reload()">Play Again</button>
+            </div>
+        </div>
+
+        <!-- Win Modal -->
+        <div id="winModal" class="modal hidden">
+            <div class="modal-content success">
+                <h2>🎉 You Escaped! 🎉</h2>
+                <p>You found all the keys and escaped before VanaSpotify caught you!</p>
+                <button onclick="location.reload()">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
