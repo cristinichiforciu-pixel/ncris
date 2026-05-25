@@ -3,66 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape VanaSpotify's Classroom</title>
+    <title>VanaSpotify - Music Academy Escape</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Main Game Container -->
     <div id="gameContainer" class="game-container">
-        <!-- Main Game Area -->
-        <div id="gameArea" class="game-area">
-            <div class="game-header">
-                <h1>🏫 Escape VanaSpotify's Classroom 🎵</h1>
-                <div class="game-stats">
-                    <p>Keys Found: <span id="keysFound">0</span>/3</p>
-                    <p>Time: <span id="timer">300</span>s</p>
-                    <p>Status: <span id="status">Running Away...</span></p>
+        
+        <!-- HUD (Heads-Up Display) -->
+        <div class="hud">
+            <div class="hud-left">
+                <div class="hud-item">
+                    <span class="label">Keys Found:</span>
+                    <span id="keysCount" class="value">0/4</span>
+                </div>
+                <div class="hud-item">
+                    <span class="label">Location:</span>
+                    <span id="locationName" class="value">Music Office</span>
                 </div>
             </div>
-
-            <!-- Game Scene -->
-            <div class="classroom-scene">
-                <div class="door locked" id="door">
-                    <p>🚪 LOCKED DOOR</p>
+            <div class="hud-center">
+                <div id="sanity" class="sanity-bar">
+                    <div id="sanityFill" class="sanity-fill"></div>
+                    <span id="sanityText">SANITY: 100%</span>
                 </div>
-
-                <div class="player" id="player">👤</div>
-
-                <div class="teacher" id="teacher">
-                    <div class="accordion">🎶</div>
-                    <p>VanaSpotify</p>
-                </div>
-
-                <!-- Interactive Objects -->
-                <div class="desk clickable" id="desk">📚</div>
-                <div class="chair clickable" id="chair">🪑</div>
-                <div class="locker clickable" id="locker">🗄️</div>
-                <div class="plant clickable" id="plant">🌿</div>
             </div>
-
-            <!-- Game Info -->
-            <div class="game-info">
-                <h2>Objective:</h2>
-                <p>Find 3 hidden keys to unlock the door and escape VanaSpotify's unstoppable accordion!</p>
-                <p id="hint">💡 Hint: Check the objects in the classroom...</p>
+            <div class="hud-right">
+                <div class="hud-item">
+                    <span class="label">Time:</span>
+                    <span id="timeDisplay" class="value">05:00</span>
+                </div>
+                <div class="hud-item" id="chaseIndicator" style="display: none;">
+                    <span class="label danger">🎵 BEING CHASED!</span>
+                </div>
             </div>
         </div>
 
-        <!-- Game Over Modal -->
-        <div id="gameOverModal" class="modal hidden">
-            <div class="modal-content">
-                <h2 id="gameOverTitle">Game Over!</h2>
-                <p id="gameOverMessage">You were caught by VanaSpotify's accordion!</p>
-                <button onclick="location.reload()">Play Again</button>
+        <!-- Main Game View -->
+        <div class="game-view" id="gameView">
+            <div class="room-container" id="roomContainer">
+                <!-- Room content will be dynamically generated -->
             </div>
         </div>
 
-        <!-- Win Modal -->
-        <div id="winModal" class="modal hidden">
-            <div class="modal-content success">
-                <h2>🎉 You Escaped! 🎉</h2>
-                <p>You found all the keys and escaped before VanaSpotify caught you!</p>
-                <button onclick="location.reload()">Play Again</button>
+        <!-- Room Navigation -->
+        <div class="room-nav" id="roomNav">
+            <!-- Navigation buttons will be dynamically generated -->
+        </div>
+
+        <!-- Interaction Panel -->
+        <div class="interaction-panel" id="interactionPanel">
+            <!-- Interactions will appear here -->
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal hidden">
+        <div class="modal-content quiz-content">
+            <div class="quiz-header">
+                <h2>🎵 MUSIC QUIZ 🎵</h2>
+                <p class="quiz-message">VanaSpotify demands an answer...</p>
             </div>
+            <div class="quiz-question">
+                <p id="quizQuestion"></p>
+            </div>
+            <div class="quiz-answers" id="quizAnswers">
+                <!-- Answers will be generated here -->
+            </div>
+            <div id="quizResult" class="quiz-result hidden">
+                <!-- Result message appears here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Chase Scene Modal -->
+    <div id="chaseModal" class="modal hidden">
+        <div class="chase-scene" id="chaseScene">
+            <div class="player-escape">🏃‍♂️</div>
+            <div class="teacher-chase">🎶</div>
+            <div class="chase-text">
+                <p id="chaseText">RUN!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Caught Modal -->
+    <div id="caughtModal" class="modal hidden">
+        <div class="modal-content caught-content">
+            <h2>😱 CAUGHT! 😱</h2>
+            <div class="bathroom-scene">
+                <p>You wake up locked in the bathroom...</p>
+                <p class="bathroom-clue">Find a way out and continue your search for the keys!</p>
+            </div>
+            <button class="btn-continue" onclick="resumeFromBathroom()">Continue</button>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-content game-over-content">
+            <h2 id="gameOverTitle">GAME OVER</h2>
+            <p id="gameOverMessage"></p>
+            <button class="btn-restart" onclick="location.reload()">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Win Modal -->
+    <div id="winModal" class="modal hidden">
+        <div class="modal-content win-content">
+            <h2>🎉 YOU ESCAPED! 🎉</h2>
+            <p>You made it out of the Music Academy alive!</p>
+            <p id="winStats"></p>
+            <button class="btn-restart" onclick="location.reload()">Play Again</button>
         </div>
     </div>
 
